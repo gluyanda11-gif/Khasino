@@ -1,0 +1,8 @@
+{
+  "name": "khasino",
+  "main": "build/entry.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "vars": {"APP_ORIGIN": "https://khasino.YOUR-SUBDOMAIN.workers.dev"},
+  "d1_databases": [{"binding": "DB", "database_name": "khasino", "database_id": "REPLACE_WITH_DATABASE_ID"}]
+}

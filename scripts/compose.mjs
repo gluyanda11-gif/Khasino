@@ -1,0 +1,10 @@
+import { readFile,writeFile } from 'node:fs/promises';
+const files=['index.html','style.css','app.js','engine.js','sw.js','bot-worker.js','deal.js','effects.js','competition.js'];
+const mime={'competition.js':'text/javascript; charset=utf-8','effects.js':'text/javascript; charset=utf-8','deal.js':'text/javascript; charset=utf-8','index.html':'text/html; charset=utf-8','style.css':'text/css; charset=utf-8','app.js':'text/javascript; charset=utf-8','engine.js':'text/javascript; charset=utf-8','sw.js':'text/javascript; charset=utf-8','bot-worker.js':'text/javascript; charset=utf-8'};
+const assets={};for(const f of files)assets[f==='index.html'?'/':'/'+f]=[await readFile('src/'+f,'utf8'),mime[f]];
+assets['/manifest.json']=[JSON.stringify({name:'Khasino',short_name:'Khasino',start_url:'/',display:'standalone',background_color:'#F6EFDC',theme_color:'#0A1F17',icons:[{src:'/icon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}),'application/manifest+json'];
+for(const name of ['mark.svg','mark-ivory.svg','mark-black.svg','logo.svg','icon.svg','back-emerald.svg','back-red.svg'])assets['/brand/'+name]=[await readFile('src/brand/'+name,'utf8'),'image/svg+xml'];
+assets['/icon.svg']=assets['/brand/icon.svg'];
+const engine=(await readFile('src/engine.js','utf8')).replace(/^export /gm,'');
+await writeFile('worker/index.js',engine+'\nconst ASSETS='+JSON.stringify(assets)+';\n'+await readFile('src/competitive-server.js','utf8')+'\n'+await readFile('src/server.js','utf8'));
+console.log('Composed shared engine, room server, and offline assets.');

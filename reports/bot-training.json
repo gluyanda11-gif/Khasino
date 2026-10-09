@@ -1,0 +1,146 @@
+{
+  "method": "Evolutionary weight tuning through self-play, followed by hold-out paired-deal evaluation. Not neural-network training.",
+  "trainingGames": 320,
+  "evaluationGames": 320,
+  "totalGames": 640,
+  "weights": {
+    "points": 12,
+    "cards": 0.7,
+    "spades": 1.1,
+    "future": 0.65,
+    "risk": 1.1,
+    "control": 0.8,
+    "hand": 0.15
+  },
+  "rounds": [
+    {
+      "iteration": 1,
+      "games": 80,
+      "margin": 118,
+      "modeMargins": [
+        136,
+        -18
+      ],
+      "winRate": 0.6,
+      "accepted": false,
+      "weights": {
+        "points": 12,
+        "cards": 0.7,
+        "spades": 1.1,
+        "future": 0.9,
+        "risk": 1.5,
+        "control": 0.45,
+        "hand": 0.15
+      }
+    },
+    {
+      "iteration": 2,
+      "games": 80,
+      "margin": -10,
+      "modeMargins": [
+        -2,
+        -8
+      ],
+      "winRate": 0.5375,
+      "accepted": false,
+      "weights": {
+        "points": 12,
+        "cards": 0.7,
+        "spades": 1.1,
+        "future": 0.9,
+        "risk": 0.75,
+        "control": 1.1,
+        "hand": 0.15
+      }
+    },
+    {
+      "iteration": 3,
+      "games": 80,
+      "margin": 32,
+      "modeMargins": [
+        12,
+        20
+      ],
+      "winRate": 0.5,
+      "accepted": false,
+      "weights": {
+        "points": 16,
+        "cards": 0.45,
+        "spades": 0.8,
+        "future": 0.8,
+        "risk": 1.1,
+        "control": 0.8,
+        "hand": 0.15
+      }
+    },
+    {
+      "iteration": 4,
+      "games": 80,
+      "margin": -72,
+      "modeMargins": [
+        -12,
+        -60
+      ],
+      "winRate": 0.45,
+      "accepted": false,
+      "weights": {
+        "points": 12,
+        "cards": 0.7,
+        "spades": 1.1,
+        "future": 0.5,
+        "risk": 1.8,
+        "control": 0.4,
+        "hand": 0.15
+      }
+    }
+  ],
+  "evaluation": [
+    {
+      "opponent": "previous-bot",
+      "mode": "two-player",
+      "games": 80,
+      "averagePointMargin": 4.8,
+      "winRate": 0.825
+    },
+    {
+      "opponent": "previous-bot",
+      "mode": "teams",
+      "games": 80,
+      "averagePointMargin": 6.25,
+      "winRate": 0.9375
+    },
+    {
+      "opponent": "untuned-strategic-bot",
+      "mode": "two-player",
+      "games": 80,
+      "averagePointMargin": 0,
+      "winRate": 0.5
+    },
+    {
+      "opponent": "untuned-strategic-bot",
+      "mode": "teams",
+      "games": 80,
+      "averagePointMargin": 0,
+      "winRate": 0.5
+    }
+  ],
+  "peakDecisionMs": 10.699392999998963,
+  "limitations": [
+    "Probabilities approximate hidden hands from public cards; they are not certainty.",
+    "Bounded response search, not exhaustive game-tree search.",
+    "Results cover these seeded deals and opponents, not optimal play.",
+    "Partner Shiya interception remains unimplemented."
+  ],
+  "promoted": false,
+  "deployedWeights": {
+    "points": 12,
+    "cards": 0.7,
+    "spades": 1.1,
+    "future": 0.65,
+    "risk": 1.1,
+    "control": 0.8,
+    "hand": 0.15
+  },
+  "weightsChanged": false,
+  "selection": "No trial improved both modes under the acceptance gate; retained the starting strategic weights."
+}

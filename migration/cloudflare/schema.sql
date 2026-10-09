@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS objects (key TEXT PRIMARY KEY, value TEXT NOT NULL, etag TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS auth_limits (key TEXT PRIMARY KEY, count INTEGER NOT NULL, expires INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS auth_limits_expiry ON auth_limits(expires);

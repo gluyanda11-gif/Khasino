@@ -1,0 +1,11 @@
+{
+  "name": "khasino",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/compose.mjs && bash scripts/build.sh",
+    "validate": "node scripts/validate-artifact.mjs",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check src/engine.js && node --check src/app.js && node --check src/server.js"
+  }
+}
